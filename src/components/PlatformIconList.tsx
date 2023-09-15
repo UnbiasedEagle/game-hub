@@ -35,7 +35,13 @@ export const PlatformIconList: React.FC<PlatformIconListProps> = ({
   return (
     <HStack marginY={1}>
       {platforms.map((platform) => {
-        return <Icon color='gray.500' as={iconMap[platform.slug]} />;
+        return (
+          <Icon
+            key={platform.id}
+            color='gray.500'
+            as={iconMap[platform.slug]}
+          />
+        );
       })}
     </HStack>
   );
