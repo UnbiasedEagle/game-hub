@@ -3,9 +3,15 @@ import { useGames } from '../hooks/useGames';
 import { GameCard } from './GameCard';
 import { GameCardSkeleton } from './GameCardSkeleton';
 import { GameCardContainer } from './GameCardContainer';
+import { Genre } from '../hooks/useGenres';
 
-export const GameGrid = () => {
-  const { data: games, error, isLoading } = useGames();
+interface GameGridProps {
+  selectedGenre: Genre | null;
+}
+
+export const GameGrid: React.FC<GameGridProps> = ({ selectedGenre }) => {
+  const { data: games, error, isLoading } = useGames(selectedGenre);
+
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
