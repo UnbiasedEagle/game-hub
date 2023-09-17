@@ -10,10 +10,14 @@ import { Genre, useGenres } from '../hooks/useGenres';
 import { getCroppedImageUrl } from '../services/image-url';
 
 interface GenreListProps {
+  selectedGenre: Genre | null;
   onSelectedGenre: (genre: Genre) => void;
 }
 
-export const GenreList: React.FC<GenreListProps> = ({ onSelectedGenre }) => {
+export const GenreList: React.FC<GenreListProps> = ({
+  selectedGenre,
+  onSelectedGenre,
+}) => {
   const { data: genres, error, isLoading } = useGenres();
 
   if (error) {
@@ -36,6 +40,7 @@ export const GenreList: React.FC<GenreListProps> = ({ onSelectedGenre }) => {
                 borderRadius={8}
               />
               <Button
+                fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
                 onClick={() => onSelectedGenre(genre)}
                 variant='link'
                 fontSize='lg'
