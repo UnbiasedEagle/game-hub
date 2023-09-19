@@ -5,6 +5,7 @@ import {
   List,
   ListItem,
   Spinner,
+  Text,
 } from '@chakra-ui/react';
 import { Genre, useGenres } from '../hooks/useGenres';
 import { getCroppedImageUrl } from '../services/image-url';
@@ -45,7 +46,9 @@ export const GenreList: React.FC<GenreListProps> = ({
                 variant='link'
                 fontSize='lg'
               >
-                {genre.name}
+                <Text overflow='hidden' textOverflow='ellipsis'>
+                  {genre.name}
+                </Text>
               </Button>
             </HStack>
           </ListItem>
