@@ -15,13 +15,17 @@ export interface Game {
   parent_platforms: { platform: Platform }[];
 }
 
-export const useGames = (selectedGenre: Genre | null) =>
+export const useGames = (
+  selectedGenre: Genre | null,
+  selectedPlatform: Platform | null
+) =>
   useData<Game>(
     '/games',
     {
       params: {
         genres: selectedGenre?.id,
+        platforms: selectedPlatform?.id,
       },
     },
-    [selectedGenre?.id]
+    [selectedGenre?.id, selectedPlatform?.id]
   );
