@@ -15,35 +15,36 @@ export const GameGrid: React.FC<GameGridProps> = ({ gameQuery }) => {
 
   const skeletons = [1, 2, 3, 4, 5, 6];
 
+  if (error) {
+    return <Text>{error}</Text>;
+  }
+
   return (
-    <>
-      {error && <Text>{error}</Text>}
-      <SimpleGrid
-        padding='10px'
-        columns={{
-          sm: 1,
-          md: 2,
-          lg: 3,
-          xl: 4,
-        }}
-        spacing={6}
-      >
-        {isLoading &&
-          skeletons.map((skeleton) => {
-            return (
-              <GameCardContainer key={skeleton}>
-                <GameCardSkeleton />
-              </GameCardContainer>
-            );
-          })}
-        {games.map((game) => {
+    <SimpleGrid
+      padding='10px'
+      columns={{
+        sm: 1,
+        md: 2,
+        lg: 3,
+        xl: 4,
+      }}
+      spacing={6}
+    >
+      {isLoading &&
+        skeletons.map((skeleton) => {
           return (
-            <GameCardContainer key={game.id}>
-              <GameCard game={game} />
+            <GameCardContainer key={skeleton}>
+              <GameCardSkeleton />
             </GameCardContainer>
           );
         })}
-      </SimpleGrid>
-    </>
+      {games.map((game) => {
+        return (
+          <GameCardContainer key={game.id}>
+            <GameCard game={game} />
+          </GameCardContainer>
+        );
+      })}
+    </SimpleGrid>
   );
 };
