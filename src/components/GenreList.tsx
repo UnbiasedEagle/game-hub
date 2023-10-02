@@ -31,11 +31,11 @@ export const GenreList: React.FC<GenreListProps> = ({
 
   return (
     <>
-      <Heading fontSize='2xl' marginBottom={3}>
+      <Heading marginTop={9} marginBottom={3} fontSize='2xl'>
         Genres
       </Heading>
       <List>
-        {genres.map((genre) => {
+        {genres?.results.map((genre) => {
           return (
             <ListItem paddingY='5px' key={genre.id}>
               <HStack>
