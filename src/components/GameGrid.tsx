@@ -16,7 +16,7 @@ export const GameGrid: React.FC<GameGridProps> = ({ gameQuery }) => {
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   if (error) {
-    return <Text>{error}</Text>;
+    return <Text>{error.message}</Text>;
   }
 
   return (
@@ -38,7 +38,7 @@ export const GameGrid: React.FC<GameGridProps> = ({ gameQuery }) => {
             </GameCardContainer>
           );
         })}
-      {games.map((game) => {
+      {games?.results.map((game) => {
         return (
           <GameCardContainer key={game.id}>
             <GameCard game={game} />
